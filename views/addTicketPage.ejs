@@ -1,0 +1,29 @@
+<%- include('partials/top.ejs') %>
+<div class="container py-5">
+	<div class="row">
+		<div class="col-8 offset-2">
+			<form action="/tickets/add" method="POST">
+				<input type="text" class="form-control mb-2" name="title" placeholder="Title" />
+				<textarea
+					name="ticket"
+					class="form-control mb-3"
+					placeholder="Ticket text"
+					cols="30"
+					rows="10"
+				></textarea>
+				<select name="userID" class="form-control mb-3">
+					<% users.forEach(user => { %>
+					<option value="<%= user.id %>"><%= user.firstName + " " + user.lastName %></option>
+					<% }) %>
+				</select>
+				<select name="priorityID" class="form-control mb-3">
+					<% priorities.forEach(priority => { %>
+					<option value="<%= priority.id %>"><%= priority.name %></option>
+					<% }) %>
+				</select>
+				<button class="btn btn-primary">SAVE</button>
+			</form>
+		</div>
+	</div>
+</div>
+<%- include('partials/bottom.ejs') %>

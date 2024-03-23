@@ -1,0 +1,21 @@
+### radi sve kako treba, gresku vraca zato sto na kraju vracamo res.redirect
+POST http://localhost:3000/vesti
+Content-Type:application/json
+
+{
+    "firstName":"Marko",
+    "lastName":"Jokic",
+    "age":28,
+    "email":"zoran@gmail.com"
+}
+
+###
+GET http://localhost:3000/vesti?id=55f4ds65fs
+Content-Type:application/json
+
+{
+    "firstName":"Marko",
+    "lastName":"Jokic",
+    "age":28,
+    "email":"zoran@gmail.com"
+}

@@ -1,0 +1,44 @@
+<%- include('partials/top.ejs') %>
+<div class="container py-5">
+	<div class="row">
+		<div class="col-8 offset-2">
+			<form action="/user/add" method="POST">
+				<input type="text" class="form-control mb-2" name="firstName" placeholder="First name" />
+
+				<input type="text" class="form-control mb-2" name="lastName" placeholder="Last name" />
+
+				<input type="email" class="form-control mb-2" name="email" placeholder="Email" />
+				<input type="number" class="form-control mb-2" name="age" placeholder="Age" />
+				<button class="btn btn-primary">SAVE</button>
+			</form>
+		</div>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Email</th>
+				<th>Age</th>
+				<th>Created at</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% users.forEach(user => { %>
+			<tr>
+				<th><%= user.id %></th>
+				<th><%= user.firstName %></th>
+				<th><%= user.lastName %></th>
+				<th><%= user.email %></th>
+				<th><%= user.age %></th>
+				<th><%= dayjs(user.createdAt).format("DD-MM-YYYY") %></th>
+				<th><a class="btn btn-danger btn-sm" href="/user/delete/<%= user.id %>">Delete</a></th>
+			</tr>
+			<% }) %>
+		</tbody>
+	</table>
+</div>
+<%- include('partials/bottom.ejs') %>

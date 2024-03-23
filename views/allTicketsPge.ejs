@@ -1,0 +1,28 @@
+<%- include('partials/top.ejs') %>
+<div class="container py-5">
+	<div class="row">
+		<% tickets.forEach(ticket => { %>
+		<div id="<%= ticket.id %>" class="col-4">
+			<div class="card">
+				<div class="card-header position-relative">
+					<h3><%= ticket.title%></h3>
+                    <span class="badge position-absolute end-0 top-0"
+					style="background-color:<%= ticket.color %> " >
+                        <%= ticket.priority %></span>
+				</div>
+				<div class="card-body">
+					<h5><%= ticket.firstName + " " + ticket.lastName%></h5>
+					<p><%= ticket.ticket %></p>
+				</div>
+				<div class="card-footer d-flex justify-content-between">
+					<button class="btn">
+						<%= dayjs(ticket.createdAt).format("DD.MM.YYYY.") %>
+					</button>
+					<a class="btn <%= ticket.done? "btn-success" : "btn-danger" %>" href="/tickets/state?id=<%= ticket.id %>&state=<%= ticket.done ? 0 : 1 %>"><%= ticket.done ? "Done" : "In progress" %></a>
+				</div>
+			</div>
+		</div>
+		<% }) %>
+	</div>
+</div>
+<%- include('partials/bottom.ejs') %>
