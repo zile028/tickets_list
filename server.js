@@ -12,29 +12,11 @@ server.use(express.static(__dirname + "/public"));
 
 server.use("/", require("./routes"));
 
-server.get("/vesti", (req, res) => {
-	console.log(req.body);
-	res.send("GET");
-});
-
-server.delete("/vesti", (req, res) => {
-	console.log(req.body);
-	res.send("DELETE");
-});
-
-server.post("/vesti", (req, res) => {
-	console.log(req.body);
-	res.send("POST");
-});
-
-server.put("/vesti", (req, res) => {
-	console.log(req);
-	res.send("PUT");
-});
-
-server.patch("/vesti", (req, res) => {
-	console.log(req);
-	res.send("PATCH");
+server.use("/", (error, req, res, next) => {
+	if (error) {
+		console.log(error.message);
+		res.render("errorPage", { error: error.message });
+	}
 });
 
 server.listen(PORT, () => {

@@ -5,6 +5,7 @@ const renderAllTicketsPage = async (req, res, next) => {
                 FROM tickets t
                 LEFT JOIN users u ON u.id = t.userID
                 JOIN priority p ON p.id = t.priorityID
+				ORDER BY u.firstName DESC, u.lastName DESC
                 `;
 
 	try {

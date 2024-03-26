@@ -18,7 +18,10 @@
 					<button class="btn">
 						<%= dayjs(ticket.createdAt).format("DD.MM.YYYY.") %>
 					</button>
-					<a class="btn <%= ticket.done? "btn-success" : "btn-danger" %>" href="/tickets/state?id=<%= ticket.id %>&state=<%= ticket.done ? 0 : 1 %>"><%= ticket.done ? "Done" : "In progress" %></a>
+					<div>
+						<a class="btn <%= ticket.done? "btn-success" : "btn-danger" %>" href="/tickets/state?id=<%= ticket.id %>&state=<%= ticket.done ? 0 : 1 %>"><%= ticket.done ? "Done" : "In progress" %></a>
+						<a class="btn btn-warning" href="/tickets/edit/<%= ticket.id %>"><i class="fa-solid fa-gear"></i></a>
+					</div>
 				</div>
 			</div>
 		</div>

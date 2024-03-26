@@ -1,0 +1,38 @@
+<%- include('partials/top.ejs') %>
+<div class="container py-5">
+	<div class="row">
+		<div class="col-8 offset-2">
+			<form action="/tickets/update" method="POST">
+				<input type="hidden" name="id" value="<%= ticket.id %>">
+				<input
+					type="text"
+					class="form-control mb-2"
+					name="title"
+					placeholder="Title"
+					value="<%= ticket.title %>"
+				/>
+				<textarea
+					name="ticket"
+					class="form-control mb-3"
+					placeholder="Ticket text"
+					cols="30"
+					rows="10"
+				>
+<%= ticket.ticket %></textarea
+				>
+				<select name="userID" class="form-control mb-3">
+					<% users.forEach(user => { %>
+					<option <%= user.id===ticket.userID ? "selected" : "" %>  value="<%= user.id %>"><%= user.firstName + " " + user.lastName %></option>
+					<% }) %>
+				</select>
+				<select name="priorityID" class="form-control mb-3">
+					<% priorities.forEach(priority => { %>
+					<option <%= priority.id===ticket.priorityID ? "selected" : "" %> value="<%= priority.id %>"><%= priority.name %></option>
+					<% }) %>
+				</select>
+				<button class="btn btn-primary">UPDATE</button>
+			</form>
+		</div>
+	</div>
+</div>
+<%- include('partials/bottom.ejs') %>

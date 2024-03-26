@@ -6,6 +6,7 @@ const db = mysql
 		user: "root",
 		password: "",
 		namedPlaceholders: true,
+		multipleStatements: true,
 	})
 	.promise();
 
